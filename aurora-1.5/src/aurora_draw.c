@@ -978,6 +978,9 @@ aurora_draw_progressbar_fill (cairo_t * cr,
   cairo_clip (cr);
 
   stroke_width = height * 2;
+  if (stroke_width <= 0)
+      // Prevent the loop later from going backwards or not at all
+      return;
   x_step = (stroke_width / 10.0) * offset;
   cairo_save (cr);
 
